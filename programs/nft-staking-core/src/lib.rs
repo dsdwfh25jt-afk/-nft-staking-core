@@ -33,7 +33,11 @@ use super::*;
         ctx.accounts.unstake(&ctx.bumps)
     }
 
-    pub fn claim(ctx: Context<Claim>) -> Result<()> {
+    pub fn claim(ctx: Context<ClaimRewards>) -> Result<()> {
         ctx.accounts.claim(&ctx.bumps)
+    }
+
+    pub fn burn(ctx: Context<Burn>) -> Result<()> {
+        ctx.accounts.burn(&ctx.bumps)
     }
 }

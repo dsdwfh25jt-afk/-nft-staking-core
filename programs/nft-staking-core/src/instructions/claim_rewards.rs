@@ -14,7 +14,7 @@ use crate::errors::StakingError;
 const SECONDS_PER_DAY: i64 = 86400;
 
 #[derive(Accounts)]
-pub struct Claim<'info> {
+pub struct ClaimRewards<'info> {
     #[account(mut)]
     pub user: Signer<'info>,
     /// CHECK: PDA Update authority
@@ -54,8 +54,8 @@ pub struct Claim<'info> {
     pub token_program: Interface<'info, TokenInterface>,
     pub associated_token_program: Program<'info, AssociatedToken>,
 }
-impl<'info> Claim<'info> {
-    pub fn claim(&mut self, bumps: &ClaimBumps) -> Result<()> {
+impl<'info> ClaimRewards<'info> {
+    pub fn claim(&mut self, bumps: &ClaimRewardsBumps) -> Result<()> {
         
         // Verify NFT owner and update authority
         let base_asset = BaseAssetV1::try_from(&self.nft.to_account_info())?;
