@@ -127,7 +127,7 @@ impl<'info> Stake<'info> {
                     .system_program(&self.system_program.to_account_info())
                     .plugin(Plugin::Attributes( Attributes { attribute_list }))
                     .invoke_signed(&[signer_seeds])?;
-            }
+            }   
         }
 
         // Freeze the NFT (check if FreezeDelegate already exists from a previous stake)

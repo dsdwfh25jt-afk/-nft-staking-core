@@ -9,7 +9,9 @@ declare_id!("72Zim5YCQs4goV9mhSAJJwGL4ELgNjjmkKxWC3dSmgGZ");
 
 #[program]
 pub mod nft_staking_core {
-    use super::*;
+    use crate::instruction::Claim;
+
+use super::*;
 
     pub fn create_collection(ctx: Context<CreateCollection>, name: String, uri: String) -> Result<()> {
         ctx.accounts.create_collection(name, uri, &ctx.bumps)
@@ -31,4 +33,7 @@ pub mod nft_staking_core {
         ctx.accounts.unstake(&ctx.bumps)
     }
 
+    pub fn claim(ctx: Context<Claim>) -> Result<()> {
+        ctx.accounts.claim(&ctx.bumps)
+    }
 }
